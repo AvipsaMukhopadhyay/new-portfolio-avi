@@ -1426,6 +1426,13 @@
                         <div class="certificate-date">Top 20 Finalist</div>
                     </div>
                 </div>
+                <div class="certificate-card fade-in">
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Generative AI</h3>
+                        <div class="certificate-issuer">Oracle</div>
+                        <div class="certificate-date">Professional</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1482,6 +1489,11 @@
 
     <!-- JavaScript -->
     <script>
+        // Prevent duplicate p5.js imports by ensuring it's loaded only once
+        if (typeof p5 !== 'undefined') {
+            console.warn('p5.js is already loaded. Ensure it is not included multiple times.');
+        }
+
         // Header scroll effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
@@ -1624,7 +1636,7 @@
             for (let i = stars.length - 1; i >= 0; i--) {
                 let s = stars[i];
                 s.fade += 0.5;
-                let alpha = s.brightness * (1 - sin(s.fade) * 0.5); // Blinking effect
+                let alpha = s.brightness * (1 - Math.sin(s.fade) * 0.5); // Blinking effect
 
                 noStroke();
                 fill(255, alpha); // White with blinking brightness
